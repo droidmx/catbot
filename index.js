@@ -16,6 +16,49 @@ client.on('message', function(message) {
     argss = argss.splice(1);
 
     switch (cmd) {
+        
+        case "!!afkcheck":
+message.channel.send("@ here")
+message.channel.send({embed: {
+  color: 0xff040b,
+  author: {
+    name: client.user.username,
+    icon_url: client.user.avatarURL
+  },
+  title: "**An AFK-check has started!**",
+  description: "React with 👍 to stay in the voice channel! You have 120 seconds!",
+  timestamp: new Date(),
+  footer: {
+    icon_url: client.user.avatarURL,
+  }
+}
+}).then(function (m) {
+  m.react("👍")
+  }).then.then(setTimeout(function() {
+                var people = message.guild.channels.find('name', 'queue').members.array();
+
+                var promises = [];
+                people.forEach(person => {
+                    promises.push(person.setVoiceChannel.message.guild.channels.find('name', 'queue'));
+                });
+                Promise.all(promises);
+                message.guild.channels.find("name", "raid-status").send({
+                embed: {
+                    color: 0xff040b,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL
+                    },
+                    title: "**The AFK-Check has ended!**",
+                    description: "Please be patient and wait for the next afk-check",
+                }
+            })
+                
+            }, 120000))
+        break;
+        
+        
+        
         case "!!realmeye":
            let user = argss.slice(0).join("");
            let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
@@ -95,6 +138,8 @@ let asguild = r.body.guild
 })
 
   break;
+      case "!!afkcheck":
+        
         
         case "!!rotmgchars":
             message.channel.send({
@@ -198,11 +243,12 @@ client.on('message', msg => { // START MESSAGE HANDLER
     
     console.log(`Present on ${client.guilds.size} servers!!`);
   client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
+    msg.channel.send('Presence successfully updated!')
   }
     
   
   //afkcheck
-if (msg.content.startsWith(prefix + 'afkcheck')){
+/*if (msg.content.startsWith(prefix + 'afkcheck')){
  msg.guild.channels.find("name", "raid-status").send('@here', {embed: {
   color: 0xfbd27a,
   author: {
@@ -220,7 +266,7 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
 .then(function (m) {
   m.react("👍")}).then(setTimeout(function() {
     msg.guild.channels.find("name", "raid-status").send('Currently under construction, stay tuned')
-  }, 10000))
+  }, 10000))*/
           /*.then(setTimeout(function() {
                 var people = msg.guild.channels.find('name', 'queue').members.array();
 
@@ -242,8 +288,8 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
                 }
             })
                 
-            }, 10000)) */
-}
+            }, 10000)) 
+}*/
      
       //afk check ends here
       
