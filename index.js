@@ -255,8 +255,9 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
                 var people = msg.guild.channels.find('name', 'queue').members.array();
 
                 var promises = [];
+    const raiding = msg.guild.channels.find('name', 'raiding'));
                 people.forEach(person => {
-                    promises.push(person.setVoiceChannel.msg.guild.channels.find('name', 'raiding'));
+                    promises.push(person.setVoiceChannel.raiding);
                 });
                 Promise.all(promises);
                 msg.guild.channels.find("name", 'raid-status').send({
