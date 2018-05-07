@@ -51,7 +51,7 @@ boof :: Uh, shows the "boof dog" image. It'll become clearer when you see it
 BOYE :: riceBOYE (best doggo)\`\`\``)
   msg.author.send(`\`\`\`asciidoc
 = Droid Only Commands =
-!restart :: Restarts Catbot
+!restart :: Restarts Droid's Fun Bot :c
 !eval :: Evaluates arbitrary JavaScript code
 !say :: Outputs the inputted arguments (anything after !say), else, if there's no args, return\`\`\``)
   msg.author.send("For the moderation commands to log properly, a channel named `mod-logs` must be provided.")
