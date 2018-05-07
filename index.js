@@ -14,7 +14,7 @@ client.on('message', function(message) {
     argss = argss.splice(1);
 
     switch (cmd) {
-        case "!realmeye":
+        case "!!realmeye":
            let user = argss.slice(0).join("");
            let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
           
@@ -39,7 +39,7 @@ let asguild = r.body.guild
            message.channel.send({embed: {
   color: 0xfbd27a,
   author: {
-    name: "Realmeye Info for" + user,
+    name: "Realmeye Info for " + user,
     icon_url: client.user.avatarURL
   },
   fields: [
@@ -94,7 +94,7 @@ let asguild = r.body.guild
 
   break;
         
-        case "!rotmgchars":
+        case "!!rotmgchars":
             message.channel.send({
                 embed: {
                     color: 0xff040b,
@@ -171,6 +171,48 @@ let asguild = r.body.guild
                 }
             });
             break;
+        //SWITCH TO SECOND MESSAGE HANDLER
+   /*   case "!!afkcheck":
+        
+        client.guild.channels.find("name", "raid-status").send('@here', {embed: {
+  color: 0xfbd27a,
+  author: {
+    name: client.user.username,
+    icon_url: client.user.avatarURL
+  },
+  title: "**An AFK-check has started!**",
+  description: "React with 👍 to join or stay in raiding vc! You have 60 seconds to react!",
+  timestamp: new Date(),
+  footer: {
+    icon_url: client.user.avatarURL,
+  }
+}
+})
+.then(function (m) {
+  m.react("👍")
+          .then(setTimeout(function() {
+                var people = client.guilds.channels.find('name', 'queue').members.array();
+
+                var promises = [];
+                people.forEach(person => {
+                    promises.push(person.setVoiceChannel.guilds.channels.find('name', 'raiding'));
+                });
+                Promise.all(promises);
+                client.guilds.channels.find("name", 'raid-status').send({
+                embed: {
+                    color: 0xfbd27a,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL
+                    },
+                    title: "**The AFK-Check has ended!**",
+                    description: "Please be patient and wait for the next afk-check",
+                }
+            })
+                
+            }, 60000))*/
+        
+        
     }
     });
 
@@ -188,7 +230,53 @@ client.on('message', msg => { // START MESSAGE HANDLER
       sent.edit(`:ping_pong: Pong! | Time Taken: ${sent.createdTimestamp - msg.createdTimestamp}ms`)
     })
   }
+  
+  
+  
+  //afkcheck
+if (msg.content.startsWith(prefix + 'afkcheck')){
+ msg.guild.channels.find("name", "raid-status").send('@here', {embed: {
+  color: 0xfbd27a,
+  author: {
+    name: client.user.username,
+    icon_url: client.user.avatarURL
+  },
+  title: "**An AFK-check has started!**",
+  description: "React with 👍 to join or stay in raiding vc! You have 60 seconds to react!",
+  timestamp: new Date(),
+  footer: {
+    icon_url: client.user.avatarURL,
+  }
+}
+})
+.then(function (m) {
+  m.react("👍")
+          .then(setTimeout(function() {
+                var people = msg.guild.channels.find('name', 'queue').members.array();
 
+                var promises = [];
+                people.forEach(person => {
+                    promises.push(person.setVoiceChannel.guilds.channels.find('name', 'raiding'));
+                });
+                Promise.all(promises);
+                msg.guild.channels.find("name", 'raid-status').send({
+                embed: {
+                    color: 0xfbd27a,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL
+                    },
+                    title: "**The AFK-Check has ended!**",
+                    description: "Please be patient and wait for the next afk-check",
+                }
+            })
+                
+            }, 60000)) 
+}
+      //afk check ends here
+      
+      
+      
   if (msg.content.startsWith(prefix + '8ball')) {
   let args = msg.content.split(" ").slice(1);
   let question = args[0]
