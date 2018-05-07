@@ -212,9 +212,11 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
   }
 }
 })
-/*.then(function (m) {
-  m.react("👍")
-          .then(setTimeout(function() {
+.then(function (m) {
+  m.react("👍")}).then(setTimeout(function() {
+    msg.guild.channels.find("name", "raid-status").send('Currently under construction, stay tuned')
+  }, 10000))
+          /*.then(setTimeout(function() {
                 var people = msg.guild.channels.find('name', 'queue').members.array();
 
                 var promises = [];
