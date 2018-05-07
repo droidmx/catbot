@@ -34,7 +34,7 @@ message.channel.send({embed: {
 }
 }).then(function (m) {
   m.react("👍")
-  }).then.then(setTimeout(function() {
+  }).then(setTimeout(function() {
                 var people = message.guild.channels.find('name', 'queue').members.array();
 
                 var promises = [];
