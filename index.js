@@ -7,6 +7,11 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
 });
 
+var port = process.env.PORT || 3000;
+app.listen(port, "0.0.0.0", function() {
+console.log("Listening on Port 3000");
+});
+
 client.on('message', function(message) {
     var argss = message.content.split(" ");
     var cmd = argss[0];
