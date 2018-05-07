@@ -24,6 +24,10 @@
         "web": "0.0.2"
     
   },
+  "engines": {
+"node": "5.0.0",
+"npm": "4.6.1"
+},
   "devDependencies": {},
   "scripts": {
     "start": "node index.js"
