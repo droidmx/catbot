@@ -7,7 +7,93 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
 });
 
+client.on('message', function(message) {
+    var argss = message.content.split(" ");
+    var cmd = argss[0];
 
+    argss = argss.splice(1);
+
+    switch (cmd) {
+        case "!realmeye":
+           let user = argss.slice(0).join("");
+           let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
+          
+           message.delete();
+           if(!user)
+return message.channel.send("Please include a username after `!realmeye`.")
+           
+           snekfetch.get(rapii).then(r => {
+let asdesc = r.body.description;
+let asname = r.body.name
+let asstars = r.body.rank
+let aslocation = r.body.last_seen
+let asfame = r.body.fame
+let ascount = r.body.characterCount
+let asacctfame = r.body.account_fame
+let ascreated = r.body.created
+let asskins = r.body.skins
+let asguild = r.body.guild
+
+
+           
+           message.channel.send({embed: {
+  color: 0xfbd27a,
+  author: {
+    name: "Realmeye Info for" + user,
+    icon_url: client.user.avatarURL
+  },
+  fields: [
+      {
+      name: "Description",
+      value: "Desc: " + asdesc,
+      inline: true
+    },
+    {
+      name: "Stars",
+      value: "Stars: " + asstars,
+      inline: true
+    },
+    {
+      name: "Last-seen Location",
+      value: "server: " + aslocation, 
+      inline: true
+    },
+    {
+      name: "Character Fame",
+      value: "Fame: " + asfame, 
+      inline: true
+    },
+           {
+             name: "Account Fame",
+             value: "Fame: " + asacctfame, 
+             inlint: true
+           },
+           {
+             name: "Account Created",
+             value: "Date: " + ascreated,
+             inline: true
+           },
+           {
+             name: "Skin Count",
+             value: "Skins: " + asskins,
+             inline: true
+           },
+           {
+             name: "Guild",
+             value: "Guild:" + asguild,
+             inline: true
+           }
+  ],
+  timestamp: new Date(),
+  footer: {
+    icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/a423acbb3957e25bce788915eda9414a.png?size=2048",
+    text: "~Droid~#5799"
+  }//end
+  }})
+})
+
+  break;
+    }
 
 const prefix = "!!"
 
