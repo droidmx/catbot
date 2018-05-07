@@ -22,20 +22,21 @@ const answers = [
 client.on('message', msg => { // START MESSAGE HANDLER
   if (msg.author.bot) return;
   
-  var argss = msg.content.split(" ");
-    var cmd = argss[0];
+ 
 
-    argss = argss.splice(1);
-
-    switch (cmd) {
-        
+  
 
 
   
         
         
-        
-        case "!!realmeye":
+         var argss = msg.content.split(" ");
+    
+
+    argss = argss.splice(1);
+          switch (cmd) {
+       
+       case "!!realmeye":
            let user = argss.slice(0).join("");
            let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
           
@@ -111,15 +112,17 @@ let asguild = r.body.guild
     text: "~Droid~#5799"
   }//end
   }})
-})
 
-  break;
+
+  
      
         
     
         
         
-    };
+    })
+                                     }
+        
   
   if (msg.content.startsWith(prefix + 'test')) {
    let args = msg.content.split(" ").slice(1);
