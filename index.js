@@ -6,7 +6,7 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: `on ${client.guilds.size} guilds | c.help`, type: 0 }});
 });
 
-const prefix = "c."
+const prefix = "!!"
 
 const answers = [
   'Without a doubt', 'Extremely likely', 'Perhaps', 'Maybe', 'I\'ll have to think about that', 'Not a chance!'
@@ -35,25 +35,25 @@ if (msg.content.startsWith(prefix + 'help')) {
   msg.channel.send(":inbox_tray: | My commands have been sent to you via DM.")
   msg.author.send(`\`\`\`asciidoc
 = General =
-c.ping :: Hm. I wonder what this does? /sarcasm
-c.8ball :: Ask the magic 8ball a question. Pretty self explanatory
-c.help :: Brings up this menu
-c.invite :: Shows the bot's invite URL\`\`\``)
+!!ping :: Hm. I wonder what this does? /sarcasm
+!!8ball :: Ask the magic 8ball a question. Pretty self explanatory
+!!help :: Brings up this menu
+!!invite :: Shows the bot's invite URL\`\`\``)
   msg.author.send(`\`\`\`asciidoc
 = Moderation =
-c.ban :: Bans the user specified
-c.kick :: Kicks the user specified
-c.softban :: Softbans the specified user\`\`\``)
+!!ban :: Bans the user specified
+!!kick :: Kicks the user specified
+!!softban :: Softbans the specified user\`\`\``)
   msg.author.send(`\`\`\`asciidoc
 = Keywords =
 google it :: Shows a "you can google it" image
 boof :: Uh, shows the "boof dog" image. It'll become clearer when you see it
 BOYE :: riceBOYE (best doggo)\`\`\``)
   msg.author.send(`\`\`\`asciidoc
-= Bot Owner Commands =
-c.restart :: Restarts Catbot
-c.eval :: Evaluates arbitrary JavaScript code
-c.say :: Outputs the inputted arguments (anything after c.say), else, if there's no args, return\`\`\``)
+= Droid Only Commands =
+!restart :: Restarts Catbot
+!eval :: Evaluates arbitrary JavaScript code
+!say :: Outputs the inputted arguments (anything after !say), else, if there's no args, return\`\`\``)
   msg.author.send("For the moderation commands to log properly, a channel named `mod-logs` must be provided.")
 }
 
@@ -106,7 +106,7 @@ let args = msg.content.split(" ").slice(1);
   }
 
   if (msg.content.startsWith(prefix + 'restart')) {
-   if (msg.author.id !== '260246864979296256') return;
+   if (msg.author.id !== '368756694114893825') return;
    msg.channel.send('Rebooting...').then(() => {
      client.destroy().then(() => {
        process.exit();
@@ -139,7 +139,7 @@ let args = msg.content.split(" ").slice(1);
   }
 
   if (msg.content.startsWith(prefix + 'eval')) {
-  if(msg.author.id !== "260246864979296256") return;
+  if(msg.author.id !== "368756694114893825") return;
   let evall = msg.content.split(' ')[0];
   let evalstuff = msg.content.split(" ").slice(1).join(" ")
   try {
@@ -170,7 +170,7 @@ let args = msg.content.split(" ").slice(1);
   if (msg.content.startsWith(prefix + "say")) {
   let args = msg.content.split(" ").slice(1).join(" ")
   msg.delete()
-  if(msg.author.id !== "260246864979296256") return;
+  if(msg.author.id !== "368756694114893825") return;
   if (!args) {
     return msg.channel.send("Whoops, no args were involved. Try again")
   }
@@ -193,7 +193,7 @@ let args = msg.content.split(" ").slice(1);
   }
   
   if (msg.content.startsWith(prefix + "invite")) {
-    msg.reply("https://discordapp.com/oauth2/authorize/?permissions=8&scope=bot&client_id=350441155768352768")
+    msg.reply("https://discordapp.com/oauth2/authorize?client_id=442905823149293568&permissions=8&scope=bot")
   }
 }); // END MESSAGE HANDLER
 
