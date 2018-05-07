@@ -39,7 +39,7 @@ client.on('message', msg => { // START MESSAGE HANDLER
            let user = argss.slice(0).join("");
            let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
           
-           message.delete();
+           msg.delete();
            if(!user)
 return msg.channel.send("Please include a username after `!realmeye`.")
            
