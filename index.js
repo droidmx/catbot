@@ -156,9 +156,9 @@ let args = msg.content.split(" ").slice(1);
   let question = argsss[0]
     let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
           
-           message.delete();
+           msg.delete();
            if(!user)
-return message.channel.send("Please include a username after `!realmeye`.")
+return msg.channel.send("Please include a username after `!realmeye`.")
            
            snekfetch.get(rapii).then(r => {
 let asdesc = r.body.description;
@@ -174,10 +174,10 @@ let asguild = r.body.guild
 
 
            
-           message.channel.send({embed: {
+           msg.channel.send({embed: {
   color: 0xfbd27a,
   author: {
-    name: "Realmeye Info for" + user,
+    name: "Realmeye Info for " + user,
     icon_url: client.user.avatarURL
   },
   fields: [
