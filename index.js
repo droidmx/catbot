@@ -265,6 +265,12 @@ if (msg.content.startsWith(prefix + 'help')) {
 !!ban :: Bans the user specified
 !!kick :: Kicks the user specified
 !!softban :: Softbans the specified user\`\`\``)
+msg.author.send(`\`\`\`asciidoc
+= RotMG  =
+!!rotmgchars :: Lists current RotMG Classes and their weapons/abilities
+!!realmeye <IGN> :: Displays basic realmeye information on an account
+!!afkcheck :: Starts an AFK Check for 60 seconds. NOTE: You MUST have a text channel named "raid-status", and 2 Voice channels
+named "queue" and "raiding". Names are Case-Sensitive. (function is buggy atm, pm ~Droid~#5799 if not successful)\`\`\``)
   msg.author.send(`\`\`\`asciidoc
 = Droid Only Commands =
 !restart :: Restarts Droid's Fun Bot :c
@@ -394,6 +400,44 @@ let args = msg.content.split(" ").slice(1);
     .addField(`Created at`, `Created at date: WIP`)
 
     msg.channel.send({embed});
+  }
+  
+  if (msg.content.startsWith(prefix + "botinfo")) {
+   msg.delete();
+
+            msg.channel.send({
+                embed: {
+                    color: 0xfbd27a,
+                    author: {
+                        name: "Droid's Fun Bot Info",
+                        icon_url: client.user.avatarURL
+                    },
+                    fields: [{
+                            name: "__**Version**__",
+                            value: "1.0.0",
+                            inline: true,
+                        },
+                        {
+                            name: "__**Release Date**__",
+                            value: "5/7/18",
+                            inline: true,
+                        },
+                        {
+                            name: "__**Information**__",
+                            value: "A fun, realm-related, discord bot open to the public to use!"
+                        },
+                        {
+                            name: "__**Invite Bot**__",
+                            value: "Link: https://discordapp.com/oauth2/authorize?client_id=442905823149293568&permissions=8&scope=bot"
+                        }
+                    ],
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/a423acbb3957e25bce788915eda9414a.png?size=2048",
+                        text: "~Droid~#5799"
+                    }
+                }
+            });
   }
   
   if (msg.content.startsWith(prefix + "invite")) {
