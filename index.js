@@ -10,7 +10,19 @@ client.on('ready', () => {
 
 
 client.on('message', function(message) {
-    var argss = message.content.split(" ");
+    
+    });
+
+const prefix = "!!"
+
+const answers = [
+  'Without a doubt', 'Extremely likely', 'Perhaps', 'Maybe', 'I\'ll have to think about that', 'Not a chance!'
+]
+
+client.on('message', msg => { // START MESSAGE HANDLER
+  if (msg.author.bot) return;
+  
+  var argss = msg.content.split(" ");
     var cmd = argss[0];
 
     argss = argss.splice(1);
@@ -29,7 +41,7 @@ client.on('message', function(message) {
           
            message.delete();
            if(!user)
-return message.channel.send("Please include a username after `!realmeye`.")
+return msg.channel.send("Please include a username after `!realmeye`.")
            
            snekfetch.get(rapii).then(r => {
 let asdesc = r.body.description;
@@ -45,7 +57,7 @@ let asguild = r.body.guild
 
 
            
-           message.channel.send({embed: {
+           msg.channel.send({embed: {
   color: 0xfbd27a,
   author: {
     name: "Realmeye Info for " + user,
@@ -107,17 +119,7 @@ let asguild = r.body.guild
     
         
         
-    }
-    });
-
-const prefix = "!!"
-
-const answers = [
-  'Without a doubt', 'Extremely likely', 'Perhaps', 'Maybe', 'I\'ll have to think about that', 'Not a chance!'
-]
-
-client.on('message', msg => { // START MESSAGE HANDLER
-  if (msg.author.bot) return;
+    };
   
   if (msg.content.startsWith(prefix + 'test')) {
    let args = msg.content.split(" ").slice(1);
