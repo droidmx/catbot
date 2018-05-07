@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setPresence({ game: { name: `on ${client.guilds.size} guilds | c.help`, type: 0 }});
+  client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
 });
 
 const prefix = "!!"
