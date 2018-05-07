@@ -17,45 +17,9 @@ client.on('message', function(message) {
 
     switch (cmd) {
         
-        case "!!afkcheck":
-message.channel.send("@ here")
-message.channel.send({embed: {
-  color: 0xff040b,
-  author: {
-    name: client.user.username,
-    icon_url: client.user.avatarURL
-  },
-  title: "**An AFK-check has started!**",
-  description: "React with 👍 to stay in the voice channel! You have 120 seconds!",
-  timestamp: new Date(),
-  footer: {
-    icon_url: client.user.avatarURL,
-  }
-}
-}).then(function (m) {
-  m.react("👍")
-  }).then(setTimeout(function() {
-                var people = message.guild.channels.find('name', 'queue').members.array();
 
-                var promises = [];
-                people.forEach(person => {
-                    promises.push(person.setVoiceChannel.message.guild.channels.find('name', 'queue'));
-                });
-                Promise.all(promises);
-                message.guild.channels.find("name", "raid-status").send({
-                embed: {
-                    color: 0xff040b,
-                    author: {
-                        name: client.user.username,
-                        icon_url: client.user.avatarURL
-                    },
-                    title: "**The AFK-Check has ended!**",
-                    description: "Please be patient and wait for the next afk-check",
-                }
-            })
-                
-            }, 120000))
-        break;
+
+  
         
         
         
@@ -138,11 +102,84 @@ let asguild = r.body.guild
 })
 
   break;
-      case "!!afkcheck":
+     
+        
+    
         
         
-        case "!!rotmgchars":
-            message.channel.send({
+    }
+    });
+
+const prefix = "!!"
+
+const answers = [
+  'Without a doubt', 'Extremely likely', 'Perhaps', 'Maybe', 'I\'ll have to think about that', 'Not a chance!'
+]
+
+client.on('message', msg => { // START MESSAGE HANDLER
+  if (msg.author.bot) return;
+
+  if (msg.content.startsWith(prefix + 'ping')) {
+    msg.channel.send("Pinging... :signal_strength:").then(sent => {
+      sent.edit(`:ping_pong: Pong! | Time Taken: ${sent.createdTimestamp - msg.createdTimestamp}ms`)
+    })
+  }
+  
+  if (msg.content.startsWith(prefix + 'setpresence')) {
+    
+    console.log(`Present on ${client.guilds.size} servers!!`);
+  client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
+    msg.channel.send('Presence successfully updated!')
+  }
+    
+  
+  //afkcheck
+
+  
+  if (msg.content.startsWith(prefix + 'afkcheck')){
+msg.channel.send("@here")
+msg.channel.send({embed: {
+  color: 0xff040b,
+  author: {
+    name: client.user.username,
+    icon_url: client.user.avatarURL
+  },
+  title: "**An AFK-check has started!**",
+  description: "React with 👍 to stay in the voice channel! You have 120 seconds!",
+  timestamp: new Date(),
+  footer: {
+    icon_url: client.user.avatarURL,
+  }
+}
+}).then(function (m) {
+  m.react("👍")
+  }).then(setTimeout(function() {
+  let queue = msg.guild.channels.find('name', 'queue');
+  let raiding = msg.guild.channels.find('name', 'queue');
+                var people = queue.members.array();
+
+                var promises = [];
+                people.forEach(person => {
+                    promises.push(person.setVoiceChannel.msg.guild.channels.find('name', 'queue'));
+                });
+                Promise.all(promises);
+                msg.guild.channels.find("name", "raid-status").send({
+                embed: {
+                    color: 0xff040b,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL
+                    },
+                    title: "**The AFK-Check has ended!**",
+                    description: "Please be patient and wait for the next afk-check",
+                }
+            })
+                
+            }, 120000))
+  }
+      
+      if (msg.content.startsWith(prefix + 'rotmgchars')) {
+       msg.channel.send({
                 embed: {
                     color: 0xff040b,
                     author: {
@@ -216,84 +253,8 @@ let asguild = r.body.guild
                         icon_url: client.user.avatarURL,
                     }
                 }
-            });
-            break;
-
-        
-        
-    }
-    });
-
-const prefix = "!!"
-
-const answers = [
-  'Without a doubt', 'Extremely likely', 'Perhaps', 'Maybe', 'I\'ll have to think about that', 'Not a chance!'
-]
-
-client.on('message', msg => { // START MESSAGE HANDLER
-  if (msg.author.bot) return;
-
-  if (msg.content.startsWith(prefix + 'ping')) {
-    msg.channel.send("Pinging... :signal_strength:").then(sent => {
-      sent.edit(`:ping_pong: Pong! | Time Taken: ${sent.createdTimestamp - msg.createdTimestamp}ms`)
-    })
-  }
-  
-  if (msg.content.startsWith(prefix + 'setpresence')) {
-    
-    console.log(`Present on ${client.guilds.size} servers!!`);
-  client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
-    msg.channel.send('Presence successfully updated!')
-  }
-    
-  
-  //afkcheck
-/*if (msg.content.startsWith(prefix + 'afkcheck')){
- msg.guild.channels.find("name", "raid-status").send('@here', {embed: {
-  color: 0xfbd27a,
-  author: {
-    name: client.user.username,
-    icon_url: client.user.avatarURL
-  },
-  title: "**An AFK-check has started!**",
-  description: "React with 👍 to join or stay in raiding vc! You have 60 seconds to react!",
-  timestamp: new Date(),
-  footer: {
-    icon_url: client.user.avatarURL,
-  }
-}
-})
-.then(function (m) {
-  m.react("👍")}).then(setTimeout(function() {
-    msg.guild.channels.find("name", "raid-status").send('Currently under construction, stay tuned')
-  }, 10000))*/
-          /*.then(setTimeout(function() {
-                var people = msg.guild.channels.find('name', 'queue').members.array();
-
-                var promises = [];
-    const raiding = msg.guild.channels.find('name', 'raiding');
-                people.forEach(person => {
-                    promises.push(person.setVoiceChannel.raiding);
-                });
-                Promise.all(promises);
-                msg.guild.channels.find("name", 'raid-status').send({
-                embed: {
-                    color: 0xfbd27a,
-                    author: {
-                        name: client.user.username,
-                        icon_url: client.user.avatarURL
-                    },
-                    title: "**The AFK-Check has ended!**",
-                    description: "Please be patient and wait for the next afk-check",
-                }
-            })
-                
-            }, 10000)) 
-}*/
-     
-      //afk check ends here
-      
-      
+            }); 
+      }
       
   if (msg.content.startsWith(prefix + '8ball')) {
   let args = msg.content.split(" ").slice(1);
