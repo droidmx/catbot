@@ -118,6 +118,13 @@ const answers = [
 
 client.on('message', msg => { // START MESSAGE HANDLER
   if (msg.author.bot) return;
+  
+  if (msg.content.startsWith(prefix + 'test')) {
+   let args = msg.content.split(" ").slice(1);
+  let question = args[0]
+  
+  msg.channel.send('test: ${question}')
+  }
 
   if (msg.content.startsWith(prefix + 'ping')) {
     msg.channel.send("Pinging... :signal_strength:").then(sent => {
