@@ -194,7 +194,12 @@ client.on('message', msg => { // START MESSAGE HANDLER
     })
   }
   
-  
+  if (msg.content.startsWith(prefix + 'setpresence')) {
+    
+    console.log(`Present on ${client.guilds.size} servers!!`);
+  client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
+  }
+    
   
   //afkcheck
 if (msg.content.startsWith(prefix + 'afkcheck')){
