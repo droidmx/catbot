@@ -212,7 +212,7 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
   }
 }
 })
-.then(function (m) {
+/*.then(function (m) {
   m.react("👍")
           .then(setTimeout(function() {
                 var people = msg.guild.channels.find('name', 'queue').members.array();
@@ -235,7 +235,7 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
                 }
             })
                 
-            }, 10000)) 
+            }, 10000)) */
 })
      }
       //afk check ends here
