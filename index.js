@@ -7,6 +7,8 @@ client.on('ready', () => {
   client.user.setPresence({ game: { name: `on ${client.guilds.size} servers | !!help`, type: 0 }});
 });
 
+
+
 const prefix = "!!"
 
 const answers = [
@@ -149,87 +151,6 @@ let args = msg.content.split(" ").slice(1);
     } catch (err) {
         msg.channel.send(`:inbox_tray: Input: \n \`\`\`${evalstuff}\`\`\` \n :outbox_tray: Output: \n  \`\`\`${clean(err)}\`\`\``)
     }
-  }
-
-  if (msg.content.startsWith(prefix + "realmeye")){
-    let argsss = msg.content.split(" ").slice(1);
-  let question = argsss[0]
-    let rapii = "http://www.tiffit.net/RealmInfo/api/user?u=" + user + "&f=c;";
-          
-           msg.delete();
-           if(!user)
-return msg.channel.send("Please include a username after `!realmeye`.")
-           
-           snekfetch.get(rapii).then(r => {
-let asdesc = r.body.description;
-let asname = r.body.name
-let asstars = r.body.rank
-let aslocation = r.body.last_seen
-let asfame = r.body.fame
-let ascount = r.body.characterCount
-let asacctfame = r.body.account_fame
-let ascreated = r.body.created
-let asskins = r.body.skins
-let asguild = r.body.guild
-
-
-           
-           msg.channel.send({embed: {
-  color: 0xfbd27a,
-  author: {
-    name: "Realmeye Info for " + user,
-    icon_url: client.user.avatarURL
-  },
-  fields: [
-      {
-      name: "Description",
-      value: "Desc: " + asdesc,
-      inline: true
-    },
-    {
-      name: "Stars",
-      value: "Stars: " + asstars,
-      inline: true
-    },
-    {
-      name: "Last-seen Location",
-      value: "server: " + aslocation, 
-      inline: true
-    },
-    {
-      name: "Character Fame",
-      value: "Fame: " + asfame, 
-      inline: true
-    },
-           {
-             name: "Account Fame",
-             value: "Fame: " + asacctfame, 
-             inlint: true
-           },
-           {
-             name: "Account Created",
-             value: "Date: " + ascreated,
-             inline: true
-           },
-           {
-             name: "Skin Count",
-             value: "Skins: " + asskins,
-             inline: true
-           },
-           {
-             name: "Guild",
-             value: "Guild:" + asguild,
-             inline: true
-           }
-  ],
-  timestamp: new Date(),
-  footer: {
-    icon_url: "https://cdn.discordapp.com/avatars/160140367554019329/a423acbb3957e25bce788915eda9414a.png?size=2048",
-    text: "~Droid~#5799"
-  }//end
-  }})
-})
-    
   }
 
   if (msg.content.startsWith(prefix + "say")) {
