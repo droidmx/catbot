@@ -45,11 +45,6 @@ if (msg.content.startsWith(prefix + 'help')) {
 !!kick :: Kicks the user specified
 !!softban :: Softbans the specified user\`\`\``)
   msg.author.send(`\`\`\`asciidoc
-= Keywords =
-google it :: Shows a "you can google it" image
-boof :: Uh, shows the "boof dog" image. It'll become clearer when you see it
-BOYE :: riceBOYE (best doggo)\`\`\``)
-  msg.author.send(`\`\`\`asciidoc
 = Droid Only Commands =
 !restart :: Restarts Droid's Fun Bot :c
 !eval :: Evaluates arbitrary JavaScript code
