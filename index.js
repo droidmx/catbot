@@ -172,6 +172,7 @@ let asguild = r.body.guild
             });
             break;
     }
+    });
 
 const prefix = "!!"
 
