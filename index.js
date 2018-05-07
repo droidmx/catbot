@@ -93,6 +93,84 @@ let asguild = r.body.guild
 })
 
   break;
+        
+        case "!rotmgchars":
+            message.channel.send({
+                embed: {
+                    color: 0xff040b,
+                    author: {
+                        name: client.user.username,
+                        icon_url: client.user.avatarURL
+                    },
+                    thumbnail: {
+                        url: 'https://steamuserimages-a.akamaihd.net/ugc/615025248066186198/CCF7A2CA7AAC3180249A4C8E8346C0DA68A4D839/'
+                    },
+                    title: "**Realm Characters**",
+                    description: "These are all of the current Realm of the Mad God characters.",
+                    fields: [{
+                            name: "__**Rogue**__ : Uses a medium ranged dagger. Special ability is cloaking.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Archer**__ : Uses a long ranged bow. Special ability is shooting debuffs.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Wizard**__ : Uses a long ranged staff. Special ability is burst of damage within a range.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Priest**__ : Uses a long ranged wand. Special ability is AoE healing.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Warrior**__ : Uses a short ranged sword. Special ability is berserk mode.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Knight**__ : Uses a short ranged sword. Special ability is shield bash.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Paladin**__ : Uses a short ranged sword. Special ability is AoE buff.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Assassin**__ : Uses a medium ranged dagger. Special ability is throwing poisons that damage over time.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Necromancer**__ : Uses a long ranged staff. Special ability is lifesteal.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Huntress**__ : Uses a long ranged bow. Special ability is placing damaging traps.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Mystic**__ : Uses a long ranged staff. Special ability is stasising enemies.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Trickster**__ : Uses a medium ranged dagger. Special ability is sending out decoys.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Sorcerer**__ : Uses a long ranged wand. Special ability is damage dealt across enemies.",
+                            value: "\u200b"
+                        },
+                        {
+                            name: "__**Ninja**__ : Uses a medium ranged katana. Special ability is shooting damaging shuriken.",
+                            value: "\u200b"
+                        }
+                    ],
+                    timestamp: new Date(),
+                    footer: {
+                        icon_url: client.user.avatarURL,
+                    }
+                }
+            });
+            break;
     }
 
 const prefix = "!!"
