@@ -236,8 +236,8 @@ if (msg.content.startsWith(prefix + 'afkcheck')){
             })
                 
             }, 10000)) */
-})
-     }
+}
+     
       //afk check ends here
       
       
